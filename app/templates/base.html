@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>{{ p.name }} — Portfolio</title>
+    <meta name="description" content="{{ p.headline }}">
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ p.name }} — {{ p.badge }}">
+    <meta property="og:description" content="{{ p.headline }}">
+    <meta property="og:url" content="{{ p.site_url }}{{ request.url.path }}">
+    <meta property="og:image" content="{{ p.site_url }}{{ p.og_image }}">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ p.name }} — {{ p.badge }}">
+    <meta name="twitter:description" content="{{ p.headline }}">
+    <meta name="twitter:image" content="{{ p.site_url }}{{ p.og_image }}">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/styles.css" />
+</head>
+
+<body class="bg-zinc-950 text-zinc-100">
+<div class="bg-grid"></div>
+
+<div class="max-w-6xl mx-auto px-5">
+    <header class="py-7 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3">
+            <span class="h-9 w-9 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center font-semibold">K</span>
+            <div class="leading-tight">
+                <div class="font-semibold tracking-tight">{{ p.name }}</div>
+                <div class="text-xs text-zinc-400">{{ p.badge }}</div>
+            </div>
+        </a>
+
+        <nav class="hidden md:flex gap-5 text-sm text-zinc-300">
+            <a class="navlink" href="/#experience">Experience</a>
+            <a class="navlink" href="/#skills">Skills</a>
+            <a class="navlink" href="/projects">Projects</a>
+            <a class="navlink" href="/#education">Education</a>
+            <a class="navlink" href="/#contact">Contact</a>
+        </nav>
+
+        <div class="flex gap-2">
+            <a class="btn ghost" href="{{ p.links.linkedin }}" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+    </header>
+
+    <main class="pb-14">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="py-10 text-sm text-zinc-500">
+        © {{ p.name }} • Python · FastAPI
+    </footer>
+</div>
+</body>
+</html>

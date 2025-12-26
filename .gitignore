@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Env
+.env
+.env.*
+
+# Docker
+docker-compose.override.yml
+
+# Assets (optional)
+app/static/images/og.png
+app/static/images/swagger-*.png
+app/static/cv/*.pdf
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
