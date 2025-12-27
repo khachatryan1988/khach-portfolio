@@ -1,11 +1,22 @@
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader
 import json
+import shutil
+
+
 
 ROOT = Path(__file__).parent
 TEMPLATES = ROOT / "app" / "templates"
 OUT = ROOT / "dist"
 OUT.mkdir(exist_ok=True)
+
+STATIC_SRC = ROOT / "app" / "static"
+STATIC_DST = OUT / "static"
+
+if STATIC_DST.exists():
+    shutil.rmtree(STATIC_DST)
+if STATIC_SRC.exists():
+    shutil.copytree(STATIC_SRC, STATIC_DST)
 
 env = Environment(loader=FileSystemLoader(str(TEMPLATES)))
 
