@@ -15,7 +15,7 @@
     "email": "khachatur.khachatryan88@gmail.com"
   },
 
-  "about": "Backend-focused engineer. I build clean APIs, work with databases, and ship production-ready services using Docker and migrations. Strong foundation in business logic and process automation.",
+  "about": "Backend-focused Software Engineer with commercial experience in Python, FastAPI, PHP, and relational databases. Strong background in building and maintaining production web applications, APIs, and internal business systems. Experienced with Docker, database migrations, and cross-functional collaboration. Comfortable working in remote and international environments.",
 
   "skills_groups": [
     {
@@ -33,6 +33,10 @@
     {
       "title": "Web",
       "skills": ["HTML", "HTML5", "CSS", "JavaScript", "jQuery", "PHP", "Laravel"]
+    },
+    {
+      "title": "Business & Accounting Tools",
+      "skills": ["AS Accounting", "1C"]
     }
   ],
 
@@ -48,6 +52,8 @@
         "Backend development for internal business systems",
         "Automation of routines and data processing",
         "Database work, integrations, and API development",
+        "Integration and automation with ERP / accounting systems (AS Accounting, 1C) to reduce manual operations",
+        "Support of business processes related to finance, inventory, and operations",
         "Worked on production websites:"
       ],
       "links": [
@@ -145,10 +151,77 @@
   "projects": [
     {
       "name": "Automation API",
-      "desc": "FastAPI service with PostgreSQL, SQLAlchemy, Alembic migrations, Docker Compose, and CRUD endpoints.",
-      "stack": ["FastAPI", "PostgreSQL", "SQLAlchemy", "Alembic", "Docker"],
+      "type": "Backend Service",
+      "desc": "Production-ready FastAPI backend service with PostgreSQL, SQLAlchemy ORM, Alembic migrations, and Docker Compose.",
+      "stack": ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Alembic", "Docker"],
       "github": "https://github.com/khachatryan1988/python-automation-api",
+      "live_url": "",
+      "role": "Python Developer",
       "screenshots": ["/static/images/swagger-1.png", "/static/images/swagger-2.png"]
+    },
+    {
+      "name": "Domus",
+      "type": "Corporate Website & Internal Systems",
+      "desc": "Corporate website and internal business systems for a large retail company. Backend development, integrations, and automation.",
+      "stack": ["PHP", "Laravel", "MySQL", "React.js"],
+      "live_url": "https://domus.am",
+      "role": "Software Engineer"
+    },
+    {
+      "name": "Duson",
+      "type": "E-commerce Website",
+      "desc": "E-commerce website with backend integrations and business logic.",
+      "stack": ["PHP", "Laravel", "MySQL", "React.js"],
+      "live_url": "https://duson.am",
+      "role": "Software Engineer"
+    },
+    {
+      "name": "KORD",
+      "type": "Brand Website",
+      "desc": "Brand website development and backend support.",
+      "stack": ["PHP", "Laravel", "MySQL", "React.js"],
+      "live_url": "https://kord.am",
+      "role": "Software Engineer"
+    },
+    {
+      "name": "Prestige Design",
+      "type": "Design Studio Website",
+      "desc": "Website for premium interior design studio.",
+      "stack": ["PHP", "Laravel", "MySQL", "React.js"],
+      "live_url": "https://prestigedesign.am",
+      "role": "Software Engineer"
+    },
+    {
+      "name": "Tradeline Group",
+      "type": "Corporate Website",
+      "desc": "Corporate website development and maintenance.",
+      "stack": ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Alembic", "Docker"],
+      "live_url": "https://tradelinegroup01.com",
+      "role": "Freelance Python Developer"
+    },
+    {
+      "name": "Chopin Festival",
+      "type": "Event Website",
+      "desc": "International music festival website with multilingual support.",
+      "stack": ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Alembic", "Docker"],
+      "live_url": "https://chopin-festival.de",
+      "role": "Freelance Python Developer"
+    },
+    {
+      "name": "Affinity Hospice LLC",
+      "type": "Healthcare Website",
+      "desc": "Development and ongoing support of a healthcare company website.",
+      "stack": ["Shopify", "Liquid", "HTML", "CSS"],
+      "live_url": "https://affinityhospicellc.com",
+      "role": "Freelance Backend / Web Developer"
+    },
+    {
+      "name": "Affinity Hospice HHA",
+      "type": "Healthcare Website",
+      "desc": "Website development for a home health agency, including content structure and technical setup.",
+      "stack": ["WordPress", "PHP", "HTML", "CSS"],
+      "live_url": "https://affinityhospicehha.com",
+      "role": "Freelance Backend / Web Developer"
     }
   ],
   "contact": {

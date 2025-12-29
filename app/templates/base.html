@@ -73,8 +73,8 @@
     </footer>
 </div>
 
-<!-- Hidden CV for PDF -->
-<div id="cv-pdf" style="display:none; background:#ffffff; color:#111; font-family: Arial, sans-serif;">
+<!-- ===== CV FOR PDF (EU / Germany style) ===== -->
+<div id="cv-pdf" style="display:none; background:#ffffff; color:#111; font-family: Arial, Helvetica, sans-serif;">
     <!-- HEADER -->
     <div style="padding:28px 28px 18px; border-bottom:1px solid #eaeaea;">
         <div style="display:flex; justify-content:space-between; gap:18px; align-items:flex-start;">
@@ -105,11 +105,13 @@
     <div style="padding:20px 28px 28px;">
         <div style="display:flex; gap:20px;">
 
-            <!-- LEFT -->
+            <!-- LEFT COLUMN -->
             <div style="flex:1.65;">
                 <!-- SUMMARY -->
                 <div>
-                    <div style="font-size:12px; letter-spacing:1.6px; color:#666; font-weight:700;">SUMMARY</div>
+                    <div style="font-size:12px; letter-spacing:1.6px; color:#666; font-weight:700;">
+                        SUMMARY
+                    </div>
                     <div style="margin-top:8px; font-size:13.2px; color:#222; line-height:1.55;">
                         {{ p.about }}
                     </div>
@@ -117,17 +119,26 @@
 
                 <!-- EXPERIENCE -->
                 <div style="margin-top:18px;">
-                    <div style="font-size:12px; letter-spacing:1.6px; color:#666; font-weight:700;">EXPERIENCE</div>
+                    <div style="font-size:12px; letter-spacing:1.6px; color:#666; font-weight:700;">
+                        EXPERIENCE
+                    </div>
 
                     {% for job in p.experience %}
                     <div style="margin-top:14px; padding-top:12px; border-top:1px solid #f0f0f0;">
                         <div style="display:flex; justify-content:space-between;">
-                            <div style="font-size:14px; font-weight:700;">{{ job.role }}</div>
-                            <div style="font-size:12px; color:#666;">{{ job.period }}</div>
+                            <div style="font-size:14px; font-weight:700;">
+                                {{ job.role }}
+                            </div>
+                            <div style="font-size:12px; color:#666;">
+                                {{ job.period }}
+                            </div>
                         </div>
 
                         <div style="margin-top:3px; font-size:13px; color:#333;">
-                            {{ job.company }}{% if job.location %} • <span style="color:#666">{{ job.location }}</span>{% endif %}
+                            {{ job.company }}
+                            {% if job.location %}
+                            • <span style="color:#666">{{ job.location }}</span>
+                            {% endif %}
                         </div>
 
                         {% if job.bullets %}
@@ -153,11 +164,13 @@
                 </div>
             </div>
 
-            <!-- RIGHT -->
+            <!-- RIGHT COLUMN -->
             <div style="flex:1; border-left:1px solid #eee; padding-left:18px;">
                 <!-- SKILLS -->
                 <div>
-                    <div style="font-size:12px; letter-spacing:1.6px; color:#666; font-weight:700;">SKILLS</div>
+                    <div style="font-size:12px; letter-spacing:1.6px; color:#666; font-weight:700;">
+                        SKILLS
+                    </div>
                     {% for g in p.skills_groups %}
                     <div style="margin-top:10px;">
                         <div style="font-size:12.5px; font-weight:700;">{{ g.title }}</div>
@@ -170,7 +183,9 @@
 
                 <!-- LANGUAGES -->
                 <div style="margin-top:16px;">
-                    <div style="font-size:12px; letter-spacing:1.6px; color:#666; font-weight:700;">LANGUAGES</div>
+                    <div style="font-size:12px; letter-spacing:1.6px; color:#666; font-weight:700;">
+                        LANGUAGES
+                    </div>
                     <div style="margin-top:6px; font-size:12.5px;">
                         Armenian — Native<br>
                         English — Intermediate<br>
@@ -180,11 +195,15 @@
 
                 <!-- EDUCATION -->
                 <div style="margin-top:16px;">
-                    <div style="font-size:12px; letter-spacing:1.6px; color:#666; font-weight:700;">EDUCATION</div>
+                    <div style="font-size:12px; letter-spacing:1.6px; color:#666; font-weight:700;">
+                        EDUCATION
+                    </div>
                     {% for ed in p.education %}
                     <div style="margin-top:8px;">
                         <div style="font-size:12.8px; font-weight:700;">{{ ed.school }}</div>
-                        {% if ed.program %}<div style="font-size:12.5px;">{{ ed.program }}</div>{% endif %}
+                        {% if ed.program %}
+                        <div style="font-size:12.5px;">{{ ed.program }}</div>
+                        {% endif %}
                         <div style="font-size:12px; color:#666;">{{ ed.period }}</div>
                     </div>
                     {% endfor %}
@@ -192,7 +211,9 @@
 
                 <!-- MILITARY -->
                 <div style="margin-top:16px;">
-                    <div style="font-size:12px; letter-spacing:1.6px; color:#666; font-weight:700;">MILITARY SERVICE</div>
+                    <div style="font-size:12px; letter-spacing:1.6px; color:#666; font-weight:700;">
+                        MILITARY SERVICE
+                    </div>
                     <div style="margin-top:6px; font-size:12.5px;">
                         Senior Sergeant (2008–2010)
                     </div>
@@ -206,6 +227,7 @@
         </div>
     </div>
 </div>
+
 
 
 <!-- PDF generator -->
