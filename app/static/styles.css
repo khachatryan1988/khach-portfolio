@@ -194,3 +194,15 @@
     border-color: rgba(255,255,255,.10);
     background: rgba(24,24,27,.35);
 }
+
+#matrix{
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+
+    opacity: 0.18;
+    filter: blur(0.2px);
+}

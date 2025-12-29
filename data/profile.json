@@ -121,7 +121,7 @@
       "name": "Automation API",
       "desc": "FastAPI service with PostgreSQL, SQLAlchemy, Alembic migrations, Docker Compose, and CRUD endpoints.",
       "stack": ["FastAPI", "PostgreSQL", "SQLAlchemy", "Alembic", "Docker"],
-      "github": "https://github.com/your-username/automation-api",
+      "github": "https://github.com/khachatryan1988/python-automation-api",
       "swagger_url": "http://localhost:8010/docs",
       "screenshots": ["/static/images/swagger-1.png", "/static/images/swagger-2.png"]
     }

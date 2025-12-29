@@ -17,7 +17,7 @@ p = json.loads(DATA.read_text(encoding="utf-8"))
 
 pages = [
     ("index.html", "/"),
-    ("projects.html", "/projects.html"),
+    ("projects.html", "/projects"),
 ]
 
 for tpl_name, path in pages:

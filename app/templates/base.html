@@ -26,7 +26,7 @@
 
 <body class="bg-zinc-950 text-zinc-100">
 <div class="bg-grid"></div>
-
+<div class="matrix-bg"></div>
 <div class="max-w-6xl mx-auto px-5">
     <header class="py-7 flex items-center justify-between">
         <a href="/" class="flex items-center gap-3">
@@ -58,5 +58,62 @@
         © {{ p.name }} • Python · FastAPI
     </footer>
 </div>
+
+<canvas id="matrix"></canvas>
+<script>
+    (function () {
+        const canvas = document.getElementById("matrix");
+        if (!canvas) return;
+        const ctx = canvas.getContext("2d");
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener("resize", resize);
+        resize();
+
+        const letters = "0123456789";
+        const fontSize = 18; // крупнее = реже столбцы
+        let columns = Math.floor(canvas.width / fontSize);
+        let drops = new Array(columns).fill(1);
+
+        function reset() {
+            columns = Math.floor(canvas.width / fontSize);
+            drops = new Array(columns).fill(1);
+        }
+        window.addEventListener("resize", reset);
+
+        function draw() {
+            // сильный “шлейф” → эффект почти растворён
+            ctx.fillStyle = "rgba(0,0,0,0.18)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.font = fontSize + "px monospace";
+            ctx.fillStyle = "rgba(0,255,120,0.25)"; // 👈 очень низкая яркость
+
+            for (let i = 0; i < drops.length; i++) {
+                // рисуем только иногда → редкая плотность
+                if (Math.random() < 0.18) continue;
+
+                const ch = letters[(Math.random() * letters.length) | 0];
+                ctx.fillText(ch, i * fontSize, drops[i] * fontSize);
+
+                // медленнее падение
+                if (Math.random() < 0.35) drops[i]++;
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.985) {
+                    drops[i] = 0;
+                }
+            }
+
+            // меньше FPS
+            setTimeout(() => requestAnimationFrame(draw), 45);
+        }
+
+        draw();
+    })();
+
+</script>
 </body>
 </html>
