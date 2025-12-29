@@ -68,6 +68,20 @@
                     <li class="li">{{ b }}</li>
                     {% endfor %}
                 </ul>
+
+                {% if job.links %}
+                <div class="mt-4 text-sm text-zinc-300">
+                    <div class="text-xs text-zinc-500 mb-2">Sites:</div>
+                    <div class="flex flex-wrap gap-2">
+                        {% for link in job.links %}
+                        <a href="{{ link }}" target="_blank" rel="noreferrer" class="chip hover:underline">
+                            {{ link | replace("https://", "") | replace("http://", "") }}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
             </div>
         </div>
         {% endfor %}
@@ -85,7 +99,6 @@
         <div class="glass p-6">
             <div class="flex items-center justify-between">
                 <div class="text-sm font-semibold text-zinc-100">{{ g.title }}</div>
-                <!--                <div class="text-xs text-zinc-500">{{ g.skills|length }} items</div>-->
             </div>
 
             <div class="mt-4 flex flex-wrap gap-2">
@@ -124,14 +137,37 @@
     </div>
 
     <div class="glass p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div class="text-sm text-zinc-300">
-            Email:
-            <a class="link" href="mailto:{{ p.links.email }}">{{ p.links.email }}</a>
+        <div class="flex flex-wrap gap-3 text-sm text-zinc-300 items-center">
+            <a class="btn ghost" href="tel:{{ p.contact.phone_primary | replace(' ', '') }}">
+                📞 {{ p.contact.phone_primary }}
+            </a>
+
+            <a class="btn ghost" href="tel:{{ p.contact.phone_secondary | replace(' ', '') }}">
+                📞 {{ p.contact.phone_secondary }}
+            </a>
+
+            <a class="btn ghost" href="mailto:{{ p.links.email }}">
+                ✉️ Email
+            </a>
+
+            <!-- ✅ Telegram -->
+            <a class="btn ghost" href="https://t.me/kh_khach" target="_blank" rel="noreferrer">
+                ✈️ Telegram
+            </a>
         </div>
+
         <div class="flex flex-wrap gap-3">
-            <a class="btn primary" href="{{ p.links.linkedin }}" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a class="btn ghost" href="{{ p.links.github }}" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="btn ghost" href="/projects" target="_blank">Projects</a>
+            <a class="btn primary" href="{{ p.links.linkedin }}" target="_blank" rel="noreferrer">
+                LinkedIn
+            </a>
+
+            <a class="btn ghost" href="{{ p.links.github }}" target="_blank" rel="noreferrer">
+                GitHub
+            </a>
+
+            <a class="btn ghost" href="/projects">
+                Projects
+            </a>
         </div>
     </div>
 </section>

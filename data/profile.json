@@ -47,7 +47,32 @@
       "bullets": [
         "Backend development for internal business systems",
         "Automation of routines and data processing",
-        "Database work, integrations, and API development"
+        "Database work, integrations, and API development",
+        "Worked on production websites:"
+      ],
+      "links": [
+        "https://domus.am",
+        "https://duson.am",
+        "https://kord.am",
+        "https://prestigedesign.am"
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Freelancer",
+      "type": "Contract",
+      "period": "May 2024 — Present",
+      "duration": "",
+      "location": "Remote",
+      "bullets": [
+        "Custom web applications and integrations",
+        "Delivered and maintained production websites:"
+      ],
+      "links": [
+        "https://tradelinegroup01.com",
+        "https://chopin-festival.de",
+        "https://affinityhospicellc.com",
+        "https://affinityhospicehha.com"
       ]
     },
     {
@@ -123,8 +148,13 @@
       "desc": "FastAPI service with PostgreSQL, SQLAlchemy, Alembic migrations, Docker Compose, and CRUD endpoints.",
       "stack": ["FastAPI", "PostgreSQL", "SQLAlchemy", "Alembic", "Docker"],
       "github": "https://github.com/khachatryan1988/python-automation-api",
-      "swagger_url": "http://localhost:8010/docs",
       "screenshots": ["/static/images/swagger-1.png", "/static/images/swagger-2.png"]
     }
-  ]
+  ],
+  "contact": {
+    "phone_primary": "+374 43 000 252",
+    "phone_secondary": "+374 98 607 878",
+    "telegram": "https://t.me/kh_khach"
+  }
+
 }

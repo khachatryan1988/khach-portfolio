@@ -75,109 +75,138 @@
 
 <!-- Hidden CV for PDF -->
 <div id="cv-pdf" style="display:none; background:#ffffff; color:#111; font-family: Arial, sans-serif;">
+    <!-- HEADER -->
     <div style="padding:28px 28px 18px; border-bottom:1px solid #eaeaea;">
         <div style="display:flex; justify-content:space-between; gap:18px; align-items:flex-start;">
             <div style="flex:1;">
-                <div style="font-size:28px; font-weight:800; letter-spacing:-0.5px;">{{ p.name }}</div>
+                <div style="font-size:28px; font-weight:800;">{{ p.name }}</div>
                 <div style="margin-top:6px; font-size:14px; color:#444;">
                     {{ p.badge }}{% if p.location %} • {{ p.location }}{% endif %}
                 </div>
-                <div style="margin-top:10px; font-size:13px; line-height:1.45; color:#333;">
+                <div style="margin-top:10px; font-size:13px; color:#333; line-height:1.45;">
                     {{ p.headline }}
                 </div>
             </div>
 
-            <div style="min-width:220px; text-align:right; font-size:12.5px; color:#333; line-height:1.6;">
-                {% if p.email %}<div><b>Email:</b> {{ p.email }}</div>{% endif %}
-                <div><b>Phone:</b> +374 43 000 252</div>
-                {% if p.links and p.links.linkedin %}<div><b>LinkedIn:</b> {{ p.links.linkedin }}</div>{% endif %}
-                {% if p.links and p.links.github %}<div><b>GitHub:</b> {{ p.links.github }}</div>{% endif %}
-                {% if p.site_url %}<div><b>Website:</b> {{ p.site_url }}</div>{% endif %}
+            <!-- CONTACT -->
+            <div style="min-width:240px; text-align:right; font-size:12.5px; color:#333; line-height:1.6;">
+                <div><b>Phone:</b> {{ p.contact.phone_primary }}</div>
+                <div><b>Phone:</b> {{ p.contact.phone_secondary }}</div>
+                <div><b>Email:</b> {{ p.links.email }}</div>
+                <div><b>Telegram:</b> {{ p.contact.telegram }}</div>
+                <div><b>LinkedIn:</b> {{ p.links.linkedin }}</div>
+                <div><b>GitHub:</b> {{ p.links.github }}</div>
+                <div><b>Website:</b> {{ p.site_url }}</div>
             </div>
         </div>
     </div>
 
+    <!-- BODY -->
     <div style="padding:20px 28px 28px;">
-        <div style="display:flex; gap:18px;">
+        <div style="display:flex; gap:20px;">
+
+            <!-- LEFT -->
             <div style="flex:1.65;">
-                <div style="margin-bottom:16px;">
-                    <div style="font-size:12px; letter-spacing:1.8px; color:#666; font-weight:700;">SUMMARY</div>
-                    <div style="margin-top:8px; font-size:13.2px; line-height:1.55; color:#222;">
+                <!-- SUMMARY -->
+                <div>
+                    <div style="font-size:12px; letter-spacing:1.6px; color:#666; font-weight:700;">SUMMARY</div>
+                    <div style="margin-top:8px; font-size:13.2px; color:#222; line-height:1.55;">
                         {{ p.about }}
                     </div>
                 </div>
 
-                <div style="margin-top:14px;">
-                    <div style="font-size:12px; letter-spacing:1.8px; color:#666; font-weight:700;">EXPERIENCE</div>
+                <!-- EXPERIENCE -->
+                <div style="margin-top:18px;">
+                    <div style="font-size:12px; letter-spacing:1.6px; color:#666; font-weight:700;">EXPERIENCE</div>
 
                     {% for job in p.experience %}
-                    <div style="margin-top:12px; padding-top:12px; border-top:1px solid #f0f0f0;">
-                        <div style="display:flex; justify-content:space-between; gap:10px;">
-                            <div style="font-size:14px; font-weight:700; color:#111;">{{ job.role }}</div>
-                            <div style="font-size:12px; color:#666; white-space:nowrap;">{{ job.period }}</div>
+                    <div style="margin-top:14px; padding-top:12px; border-top:1px solid #f0f0f0;">
+                        <div style="display:flex; justify-content:space-between;">
+                            <div style="font-size:14px; font-weight:700;">{{ job.role }}</div>
+                            <div style="font-size:12px; color:#666;">{{ job.period }}</div>
                         </div>
+
                         <div style="margin-top:3px; font-size:13px; color:#333;">
                             {{ job.company }}{% if job.location %} • <span style="color:#666">{{ job.location }}</span>{% endif %}
                         </div>
 
                         {% if job.bullets %}
-                        <ul style="margin:8px 0 0 18px; padding:0; font-size:13px; line-height:1.55; color:#222;">
+                        <ul style="margin:8px 0 0 18px; font-size:13px; color:#222;">
                             {% for b in job.bullets %}
                             <li style="margin:4px 0;">{{ b }}</li>
                             {% endfor %}
                         </ul>
+                        {% endif %}
+
+                        {% if job.links %}
+                        <div style="margin-top:6px; font-size:12.5px; color:#333;">
+                            <b>Sites:</b>
+                            <div style="margin-top:3px;">
+                                {% for l in job.links %}
+                                <div>{{ l }}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
                         {% endif %}
                     </div>
                     {% endfor %}
                 </div>
             </div>
 
+            <!-- RIGHT -->
             <div style="flex:1; border-left:1px solid #eee; padding-left:18px;">
-                <div style="margin-bottom:16px;">
-                    <div style="font-size:12px; letter-spacing:1.8px; color:#666; font-weight:700;">SKILLS</div>
-
+                <!-- SKILLS -->
+                <div>
+                    <div style="font-size:12px; letter-spacing:1.6px; color:#666; font-weight:700;">SKILLS</div>
                     {% for g in p.skills_groups %}
                     <div style="margin-top:10px;">
-                        <div style="font-size:12.5px; font-weight:700; color:#111;">{{ g.title }}</div>
-                        <div style="margin-top:6px; font-size:12.8px; line-height:1.55; color:#222;">
+                        <div style="font-size:12.5px; font-weight:700;">{{ g.title }}</div>
+                        <div style="margin-top:4px; font-size:12.5px; color:#222;">
                             {% for s in g.skills %}{{ s }}{% if not loop.last %}, {% endif %}{% endfor %}
                         </div>
                     </div>
                     {% endfor %}
                 </div>
 
-                {% if p.projects %}
+                <!-- LANGUAGES -->
                 <div style="margin-top:16px;">
-                    <div style="font-size:12px; letter-spacing:1.8px; color:#666; font-weight:700;">PROJECTS</div>
-                    {% for pr in p.projects %}
-                    <div style="margin-top:10px;">
-                        <div style="font-size:12.8px; font-weight:700; color:#111;">{{ pr.name }}</div>
-                        <div style="margin-top:5px; font-size:12.5px; line-height:1.5; color:#222;">{{ pr.desc }}</div>
+                    <div style="font-size:12px; letter-spacing:1.6px; color:#666; font-weight:700;">LANGUAGES</div>
+                    <div style="margin-top:6px; font-size:12.5px;">
+                        Armenian — Native<br>
+                        English — Intermediate<br>
+                        Russian — Advanced
                     </div>
-                    {% endfor %}
                 </div>
-                {% endif %}
 
-                {% if p.education %}
+                <!-- EDUCATION -->
                 <div style="margin-top:16px;">
-                    <div style="font-size:12px; letter-spacing:1.8px; color:#666; font-weight:700;">EDUCATION</div>
+                    <div style="font-size:12px; letter-spacing:1.6px; color:#666; font-weight:700;">EDUCATION</div>
                     {% for ed in p.education %}
-                    <div style="margin-top:10px;">
-                        <div style="font-size:12.8px; font-weight:700; color:#111;">{{ ed.school }}</div>
-                        {% if ed.program %}<div style="margin-top:3px; font-size:12.5px; color:#222;">{{ ed.program }}</div>{% endif %}
-                        <div style="margin-top:3px; font-size:12px; color:#666;">{{ ed.period }}</div>
+                    <div style="margin-top:8px;">
+                        <div style="font-size:12.8px; font-weight:700;">{{ ed.school }}</div>
+                        {% if ed.program %}<div style="font-size:12.5px;">{{ ed.program }}</div>{% endif %}
+                        <div style="font-size:12px; color:#666;">{{ ed.period }}</div>
                     </div>
                     {% endfor %}
                 </div>
-                {% endif %}
+
+                <!-- MILITARY -->
+                <div style="margin-top:16px;">
+                    <div style="font-size:12px; letter-spacing:1.6px; color:#666; font-weight:700;">MILITARY SERVICE</div>
+                    <div style="margin-top:6px; font-size:12.5px;">
+                        Senior Sergeant (2008–2010)
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div style="margin-top:16px; font-size:11px; color:#888; border-top:1px solid #eee; padding-top:10px;">
+        <!-- FOOTER -->
+        <div style="margin-top:18px; padding-top:10px; border-top:1px solid #eee; font-size:11px; color:#888;">
             Generated from portfolio • {{ p.site_url }}
         </div>
     </div>
 </div>
+
 
 <!-- PDF generator -->
 <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
