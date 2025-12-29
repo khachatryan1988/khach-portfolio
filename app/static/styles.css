@@ -197,7 +197,7 @@
 .phone-link{
     font-size: 13px;
     opacity: 0.86;
-    padding: 6px 10px;
+    padding: 10px 10px;
     border-radius: 999px;
     border: 1px solid rgba(255,255,255,0.12);
     background: rgba(24,24,27,.22);
@@ -208,11 +208,31 @@
 
 /* Mobile */
 @media (max-width: 900px){
-    .header-nav{ display:none; } /* на мобиле убираем меню, чтобы не ломало шапку */
+    /* НЕ скрываем меню — делаем компактнее и разрешаем перенос */
+    .site-header{
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .header-nav{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        order: 3;          /* меню уходит на 2-ю строку */
+        margin-top: 8px;
+    }
+
+    .header-nav a{
+        font-size: 13px;
+        padding: 7px 10px;
+    }
 }
 
 @media (max-width: 768px){
-    #matrix-bg{ opacity: 0.18; } /* на мобиле чуть виднее, но все равно subtle */
+    /* матрица на мобиле — чуть виднее */
+    #matrix-bg{ opacity: 0.18; }
 
     .site-header{
         padding: 14px 0;
@@ -228,14 +248,17 @@
     .brandName{ font-size: 14px; }
     .brandBadge{ font-size: 11px; }
 
+    /* действия справа не скрываем, просто делаем компактнее */
     .header-actions{
+        order: 2;
+        flex-wrap: wrap;
+        justify-content: flex-end;
         gap: 8px;
-        flex-wrap: nowrap;
     }
 
     .phone-link{
         font-size: 12px;
-        padding: 5px 8px;
+        padding: 6px 10px;
     }
 
     .btn{
@@ -245,7 +268,19 @@
 }
 
 @media (max-width: 420px){
-    /* чтобы в совсем маленьком экране было аккуратно */
-    .phone-link{ display:none; } /* если хочешь оставить — скажи, сделаю иначе */
-    .btn.ghost{ display:none; }  /* LinkedIn прячем, остаётся Download */
+    /* ничего не скрываем — ещё компактнее */
+    .header-actions{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .header-nav{
+        justify-content: center;
+    }
+
+    .btn, .phone-link{
+        padding: 8px 10px;
+        font-size: 12.5px;
+    }
 }
+
