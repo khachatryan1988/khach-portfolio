@@ -4,9 +4,10 @@
   "badge": "Python Backend Developer",
   "location": "Yerevan, Armenia",
 
-  "site_url": "http://localhost:8000",
+  "site_url": "https://khachatryan-dev.com/",
   "og_image": "/static/images/og.jpg",
-  "cv_url": "/static/cv/Khach_Khachatryan_CV.pdf",
+  "cv_url": "/static/cv/Khachatur_Khachatryan_CV.pdf",
+  "phone": "+374 43 000 252",
 
   "links": {
     "linkedin": "https://linkedin.com/in/khach-khachatryan",

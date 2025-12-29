@@ -5,48 +5,62 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
     <title>Khachatur Khachatryan — Portfolio</title>
-    <meta name="description" content="Python Backend Developer | FastAPI | PostgreSQL | Docker">
+    <meta name="description" content="Python Backend Developer | FastAPI | PostgreSQL | Docker"/>
 
     <!-- OpenGraph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Khachatur Khachatryan — Python Backend Developer">
-    <meta property="og:description" content="Python Backend Developer | FastAPI | PostgreSQL | Docker">
-    <meta property="og:url" content="http://localhost:8000">
-    <meta property="og:image" content="http://localhost:8000/static/images/og.jpg">
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Khachatur Khachatryan — Python Backend Developer"/>
+    <meta property="og:description" content="Python Backend Developer | FastAPI | PostgreSQL | Docker"/>
+    <meta property="og:url" content="https://khachatryan-dev.com//projects.html"/>
+    <meta property="og:image" content="https://khachatryan-dev.com//static/images/og.jpg"/>
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Khachatur Khachatryan — Python Backend Developer">
-    <meta name="twitter:description" content="Python Backend Developer | FastAPI | PostgreSQL | Docker">
-    <meta name="twitter:image" content="http://localhost:8000/static/images/og.jpg">
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Khachatur Khachatryan — Python Backend Developer"/>
+    <meta name="twitter:description" content="Python Backend Developer | FastAPI | PostgreSQL | Docker"/>
+    <meta name="twitter:image" content="https://khachatryan-dev.com//static/images/og.jpg"/>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/static/styles.css" />
 </head>
 
 <body class="bg-zinc-950 text-zinc-100">
-<div class="bg-grid"></div>
-<div class="matrix-bg"></div>
-<div class="max-w-6xl mx-auto px-5">
-    <header class="py-7 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-3">
-            <span class="h-9 w-9 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center font-semibold">K</span>
-            <div class="leading-tight">
-                <div class="font-semibold tracking-tight">Khachatur Khachatryan</div>
-                <div class="text-xs text-zinc-400">Python Backend Developer</div>
-            </div>
+
+<!-- Matrix background layer -->
+<canvas id="matrix-bg" aria-hidden="true"></canvas>
+
+<!-- gradient + grid -->
+<div class="bg-grid" aria-hidden="true"></div>
+
+<div class="max-w-6xl mx-auto px-5 page">
+    <header class="site-header">
+        <a href="/" class="brand">
+            <span class="brandMark">K</span>
+            <span class="brandText">
+          <span class="brandName">Khachatur Khachatryan</span>
+          <span class="brandBadge">Python Backend Developer</span>
+        </span>
         </a>
 
-        <nav class="hidden md:flex gap-5 text-sm text-zinc-300">
-            <a class="navlink" href="/#experience">Experience</a>
-            <a class="navlink" href="/#skills">Skills</a>
-            <a class="navlink" href="/projects">Projects</a>
-            <a class="navlink" href="/#education">Education</a>
-            <a class="navlink" href="/#contact">Contact</a>
+        <nav class="header-nav">
+            <a href="/#experience">Experience</a>
+            <a href="/#skills">Skills</a>
+            <a href="/projects">Projects</a>
+            <a href="/#education">Education</a>
+            <a href="/#contact">Contact</a>
         </nav>
 
-        <div class="flex gap-2">
-            <a class="btn ghost" href="https://linkedin.com/in/khach-khachatryan" target="_blank" rel="noreferrer">LinkedIn</a>
+        <div class="header-actions">
+            <!-- телефон: вот сюда (как ты спрашивал) -->
+            <a href="tel:+37443000252" class="phone-link">📞 +374 43 000 252</a>
+
+            <a href="https://linkedin.com/in/khach-khachatryan"
+               class="btn ghost" target="_blank" rel="noreferrer">
+                LinkedIn
+            </a>
+
+            <!-- важно: id="btn-cv" чтобы сработал PDF -->
+            <a href="#" id="btn-cv" class="btn primary">Download CV (PDF)</a>
         </div>
     </header>
 
@@ -110,65 +124,362 @@
     </main>
 
     <footer class="py-10 text-sm text-zinc-500">
-        © Khachatur Khachatryan • Python · FastAPI
+        © Khachatur Khachatryan • Built with Python
     </footer>
 </div>
 
-<canvas id="matrix"></canvas>
+<!-- Hidden CV for PDF -->
+<div id="cv-pdf" style="display:none; background:#ffffff; color:#111; font-family: Arial, sans-serif;">
+    <div style="padding:28px 28px 18px; border-bottom:1px solid #eaeaea;">
+        <div style="display:flex; justify-content:space-between; gap:18px; align-items:flex-start;">
+            <div style="flex:1;">
+                <div style="font-size:28px; font-weight:800; letter-spacing:-0.5px;">Khachatur Khachatryan</div>
+                <div style="margin-top:6px; font-size:14px; color:#444;">
+                    Python Backend Developer • Yerevan, Armenia
+                </div>
+                <div style="margin-top:10px; font-size:13px; line-height:1.45; color:#333;">
+                    Python Backend Developer | FastAPI | PostgreSQL | Docker
+                </div>
+            </div>
+
+            <div style="min-width:220px; text-align:right; font-size:12.5px; color:#333; line-height:1.6;">
+                
+                <div><b>Phone:</b> +374 43 000 252</div>
+                <div><b>LinkedIn:</b> https://linkedin.com/in/khach-khachatryan</div>
+                <div><b>GitHub:</b> https://github.com/khachatryan1988</div>
+                <div><b>Website:</b> https://khachatryan-dev.com/</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding:20px 28px 28px;">
+        <div style="display:flex; gap:18px;">
+            <div style="flex:1.65;">
+                <div style="margin-bottom:16px;">
+                    <div style="font-size:12px; letter-spacing:1.8px; color:#666; font-weight:700;">SUMMARY</div>
+                    <div style="margin-top:8px; font-size:13.2px; line-height:1.55; color:#222;">
+                        Backend-focused engineer. I build clean APIs, work with databases, and ship production-ready services using Docker and migrations. Strong foundation in business logic and process automation.
+                    </div>
+                </div>
+
+                <div style="margin-top:14px;">
+                    <div style="font-size:12px; letter-spacing:1.8px; color:#666; font-weight:700;">EXPERIENCE</div>
+
+                    
+                    <div style="margin-top:12px; padding-top:12px; border-top:1px solid #f0f0f0;">
+                        <div style="display:flex; justify-content:space-between; gap:10px;">
+                            <div style="font-size:14px; font-weight:700; color:#111;">Software Engineer</div>
+                            <div style="font-size:12px; color:#666; white-space:nowrap;">Aug 2022 — Present</div>
+                        </div>
+                        <div style="margin-top:3px; font-size:13px; color:#333;">
+                            DOMUS CJSC • <span style="color:#666">Hybrid</span>
+                        </div>
+
+                        
+                        <ul style="margin:8px 0 0 18px; padding:0; font-size:13px; line-height:1.55; color:#222;">
+                            
+                            <li style="margin:4px 0;">Backend development for internal business systems</li>
+                            
+                            <li style="margin:4px 0;">Automation of routines and data processing</li>
+                            
+                            <li style="margin:4px 0;">Database work, integrations, and API development</li>
+                            
+                        </ul>
+                        
+                    </div>
+                    
+                    <div style="margin-top:12px; padding-top:12px; border-top:1px solid #f0f0f0;">
+                        <div style="display:flex; justify-content:space-between; gap:10px;">
+                            <div style="font-size:14px; font-weight:700; color:#111;">Junior PHP Developer</div>
+                            <div style="font-size:12px; color:#666; white-space:nowrap;">Mar 2022 — Aug 2022</div>
+                        </div>
+                        <div style="margin-top:3px; font-size:13px; color:#333;">
+                            Rocket Systems • <span style="color:#666">Yerevan, Armenia</span>
+                        </div>
+
+                        
+                        <ul style="margin:8px 0 0 18px; padding:0; font-size:13px; line-height:1.55; color:#222;">
+                            
+                            <li style="margin:4px 0;">Backend development using PHP and Laravel</li>
+                            
+                            <li style="margin:4px 0;">REST APIs and database queries</li>
+                            
+                            <li style="margin:4px 0;">Bug fixing and feature implementation</li>
+                            
+                        </ul>
+                        
+                    </div>
+                    
+                    <div style="margin-top:12px; padding-top:12px; border-top:1px solid #f0f0f0;">
+                        <div style="display:flex; justify-content:space-between; gap:10px;">
+                            <div style="font-size:14px; font-weight:700; color:#111;">Senior Accountant</div>
+                            <div style="font-size:12px; color:#666; white-space:nowrap;">Feb 2021 — Feb 2022</div>
+                        </div>
+                        <div style="margin-top:3px; font-size:13px; color:#333;">
+                            Decora Group LLC • <span style="color:#666">Yerevan, Armenia</span>
+                        </div>
+
+                        
+                        <ul style="margin:8px 0 0 18px; padding:0; font-size:13px; line-height:1.55; color:#222;">
+                            
+                            <li style="margin:4px 0;">Analytical work with reports and financial data</li>
+                            
+                            <li style="margin:4px 0;">Process discipline and accuracy under deadlines</li>
+                            
+                        </ul>
+                        
+                    </div>
+                    
+                    <div style="margin-top:12px; padding-top:12px; border-top:1px solid #f0f0f0;">
+                        <div style="display:flex; justify-content:space-between; gap:10px;">
+                            <div style="font-size:14px; font-weight:700; color:#111;">Accountant</div>
+                            <div style="font-size:12px; color:#666; white-space:nowrap;">Apr 2018 — Feb 2021</div>
+                        </div>
+                        <div style="margin-top:3px; font-size:13px; color:#333;">
+                            Decora Group LLC
+                        </div>
+
+                        
+                        <ul style="margin:8px 0 0 18px; padding:0; font-size:13px; line-height:1.55; color:#222;">
+                            
+                            <li style="margin:4px 0;">Data-heavy operations, reconciliations, reporting</li>
+                            
+                        </ul>
+                        
+                    </div>
+                    
+                    <div style="margin-top:12px; padding-top:12px; border-top:1px solid #f0f0f0;">
+                        <div style="display:flex; justify-content:space-between; gap:10px;">
+                            <div style="font-size:14px; font-weight:700; color:#111;">Inventory Controller</div>
+                            <div style="font-size:12px; color:#666; white-space:nowrap;">Oct 2016 — Mar 2017</div>
+                        </div>
+                        <div style="margin-top:3px; font-size:13px; color:#333;">
+                            OSG Records Management
+                        </div>
+
+                        
+                        <ul style="margin:8px 0 0 18px; padding:0; font-size:13px; line-height:1.55; color:#222;">
+                            
+                            <li style="margin:4px 0;">Inventory tracking and operational control</li>
+                            
+                        </ul>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div style="flex:1; border-left:1px solid #eee; padding-left:18px;">
+                <div style="margin-bottom:16px;">
+                    <div style="font-size:12px; letter-spacing:1.8px; color:#666; font-weight:700;">SKILLS</div>
+
+                    
+                    <div style="margin-top:10px;">
+                        <div style="font-size:12.5px; font-weight:700; color:#111;">Backend</div>
+                        <div style="margin-top:6px; font-size:12.8px; line-height:1.55; color:#222;">
+                            Python, FastAPI, REST API, OOP, MVC
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top:10px;">
+                        <div style="font-size:12.5px; font-weight:700; color:#111;">Databases</div>
+                        <div style="margin-top:6px; font-size:12.8px; line-height:1.55; color:#222;">
+                            PostgreSQL, MySQL, SQL, Migrations (Alembic)
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top:10px;">
+                        <div style="font-size:12.5px; font-weight:700; color:#111;">DevOps</div>
+                        <div style="margin-top:6px; font-size:12.8px; line-height:1.55; color:#222;">
+                            Docker, Git (VCS), Linux
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top:10px;">
+                        <div style="font-size:12.5px; font-weight:700; color:#111;">Web</div>
+                        <div style="margin-top:6px; font-size:12.8px; line-height:1.55; color:#222;">
+                            HTML, HTML5, CSS, JavaScript, jQuery, PHP, Laravel
+                        </div>
+                    </div>
+                    
+                </div>
+
+                
+                <div style="margin-top:16px;">
+                    <div style="font-size:12px; letter-spacing:1.8px; color:#666; font-weight:700;">PROJECTS</div>
+                    
+                    <div style="margin-top:10px;">
+                        <div style="font-size:12.8px; font-weight:700; color:#111;">Automation API</div>
+                        <div style="margin-top:5px; font-size:12.5px; line-height:1.5; color:#222;">FastAPI service with PostgreSQL, SQLAlchemy, Alembic migrations, Docker Compose, and CRUD endpoints.</div>
+                    </div>
+                    
+                </div>
+                
+
+                
+                <div style="margin-top:16px;">
+                    <div style="font-size:12px; letter-spacing:1.8px; color:#666; font-weight:700;">EDUCATION</div>
+                    
+                    <div style="margin-top:10px;">
+                        <div style="font-size:12.8px; font-weight:700; color:#111;">ASUE</div>
+                        
+                        <div style="margin-top:3px; font-size:12px; color:#666;">2004 — 2008</div>
+                    </div>
+                    
+                    <div style="margin-top:10px;">
+                        <div style="font-size:12.8px; font-weight:700; color:#111;">TCO LLC</div>
+                        <div style="margin-top:3px; font-size:12.5px; color:#222;">Full Stack Web Developer</div>
+                        <div style="margin-top:3px; font-size:12px; color:#666;">May 2021 — Jan 2022</div>
+                    </div>
+                    
+                    <div style="margin-top:10px;">
+                        <div style="font-size:12.8px; font-weight:700; color:#111;">Economics & Law JRC</div>
+                        <div style="margin-top:3px; font-size:12.5px; color:#222;">Accounting and Taxation principles</div>
+                        <div style="margin-top:3px; font-size:12px; color:#666;">Dec 2016 — May 2017</div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+
+        <div style="margin-top:16px; font-size:11px; color:#888; border-top:1px solid #eee; padding-top:10px;">
+            Generated from portfolio • https://khachatryan-dev.com/
+        </div>
+    </div>
+</div>
+
+<!-- PDF generator -->
+<script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
+
+<!-- Matrix: slow, random, not full-screen at once, works on mobile -->
 <script>
-    (function () {
-        const canvas = document.getElementById("matrix");
-        if (!canvas) return;
-        const ctx = canvas.getContext("2d");
+    (() => {
+        const c = document.getElementById("matrix-bg");
+        if (!c) return;
+
+        const ctx = c.getContext("2d", { alpha: true });
+        const chars = "01";
+        let w = 0, h = 0, dpr = 1, fontSize = 14, cols = 0;
+
+        let y = [];
+        let startDelay = [];
+        let active = [];
+
+        const randInt = (a,b) => (Math.random()*(b-a+1)+a)|0;
+        const randChar = () => chars[(Math.random()*chars.length)|0];
+
+        function initColumns() {
+            cols = Math.max(1, Math.floor(w / fontSize));
+            y = new Array(cols).fill(0);
+            startDelay = Array.from({length: cols}, () => randInt(0, 280)); // рандом старт
+            active = Array.from({length: cols}, () => Math.random() < 0.40); // не весь экран сразу
+        }
 
         function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            dpr = Math.min(window.devicePixelRatio || 1, 2);
+            w = Math.floor(window.innerWidth);
+            h = Math.floor(window.innerHeight);
+
+            // чуть крупнее на мобиле чтобы было видно, но всё равно subtle
+            fontSize = (w <= 768) ? 16 : 14;
+
+            c.style.width = w + "px";
+            c.style.height = h + "px";
+            c.width = Math.floor(w * dpr);
+            c.height = Math.floor(h * dpr);
+            ctx.setTransform(dpr,0,0,dpr,0,0);
+
+            initColumns();
         }
-        window.addEventListener("resize", resize);
-        resize();
 
-        const letters = "01";
-        const fontSize = 18; // крупнее = реже столбцы
-        let columns = Math.floor(canvas.width / fontSize);
-        let drops = new Array(columns).fill(1);
-
-        function reset() {
-            columns = Math.floor(canvas.width / fontSize);
-            drops = new Array(columns).fill(1);
+        function pulseActivation() {
+            // постепенно включаем новые колонки
+            for (let i = 0; i < cols; i++) {
+                if (!active[i] && Math.random() < 0.010) {
+                    active[i] = true;
+                    startDelay[i] = randInt(0, 180);
+                    y[i] = 0;
+                }
+            }
         }
-        window.addEventListener("resize", reset);
 
-        function draw() {
-            // сильный “шлейф” → эффект почти растворён
-            ctx.fillStyle = "rgba(0,0,0,0.18)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        let last = 0;
+        function draw(t) {
+            // медленнее
+            if (t - last < 110) { requestAnimationFrame(draw); return; }
+            last = t;
+
+            // шлейф
+            ctx.fillStyle = "rgba(0,0,0,0.20)";
+            ctx.fillRect(0, 0, w, h);
 
             ctx.font = fontSize + "px monospace";
-            ctx.fillStyle = "rgba(0,255,120,0.25)"; // 👈 очень низкая яркость
+            // чуть виднее
+            ctx.fillStyle = "rgba(0,255,120,0.58)";
 
-            for (let i = 0; i < drops.length; i++) {
-                // рисуем только иногда → редкая плотность
-                if (Math.random() < 0.18) continue;
+            pulseActivation();
 
-                const ch = letters[(Math.random() * letters.length) | 0];
-                ctx.fillText(ch, i * fontSize, drops[i] * fontSize);
+            for (let i = 0; i < cols; i++) {
+                if (!active[i]) continue;
 
-                // медленнее падение
-                if (Math.random() < 0.35) drops[i]++;
+                if (startDelay[i] > 0) { startDelay[i]--; continue; }
 
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.985) {
-                    drops[i] = 0;
+                // немного “пустоты”, чтобы не было ковром
+                if (Math.random() < 0.22) continue;
+
+                const x = i * fontSize;
+                const yy = y[i];
+
+                ctx.fillText(randChar(), x, yy);
+
+                // падение медленное
+                y[i] += fontSize * 0.32;
+
+                if (y[i] > h + randInt(0, 260)) {
+                    if (Math.random() < 0.60) active[i] = false;
+                    y[i] = 0;
+                    startDelay[i] = randInt(60, 320);
                 }
             }
 
-            // меньше FPS
-            setTimeout(() => requestAnimationFrame(draw), 45);
+            requestAnimationFrame(draw);
         }
 
-        draw();
-    })();
+        window.addEventListener("resize", resize, {passive:true});
+        window.addEventListener("orientationchange", () => setTimeout(resize, 250), {passive:true});
 
+        resize();
+        requestAnimationFrame(draw);
+    })();
 </script>
+
+<!-- CV PDF generation -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.getElementById("btn-cv");
+        const el = document.getElementById("cv-pdf");
+        if (!btn || !el) return;
+
+        btn.addEventListener("click", async (e) => {
+            e.preventDefault();
+
+            const prevDisplay = el.style.display;
+            el.style.display = "block";
+
+            const opt = {
+                margin: [8, 8, 10, 8],
+                filename: "Khachatur_Khachatryan_CV.pdf",
+                image: { type: "jpeg", quality: 0.98 },
+                html2canvas: { scale: 3, useCORS: true, backgroundColor: "#ffffff" },
+                jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+            };
+
+            await html2pdf().set(opt).from(el).save();
+            el.style.display = prevDisplay;
+        });
+    });
+</script>
+
 </body>
 </html>

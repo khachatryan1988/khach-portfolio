@@ -5,48 +5,62 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
     <title>{{ p.name }} — Portfolio</title>
-    <meta name="description" content="{{ p.headline }}">
+    <meta name="description" content="{{ p.headline }}"/>
 
     <!-- OpenGraph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ p.name }} — {{ p.badge }}">
-    <meta property="og:description" content="{{ p.headline }}">
-    <meta property="og:url" content="{{ p.site_url }}{{ page_path }}">
-    <meta property="og:image" content="{{ p.site_url }}{{ p.og_image }}">
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="{{ p.name }} — {{ p.badge }}"/>
+    <meta property="og:description" content="{{ p.headline }}"/>
+    <meta property="og:url" content="{{ p.site_url }}{{ page_path }}"/>
+    <meta property="og:image" content="{{ p.site_url }}{{ p.og_image }}"/>
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ p.name }} — {{ p.badge }}">
-    <meta name="twitter:description" content="{{ p.headline }}">
-    <meta name="twitter:image" content="{{ p.site_url }}{{ p.og_image }}">
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="{{ p.name }} — {{ p.badge }}"/>
+    <meta name="twitter:description" content="{{ p.headline }}"/>
+    <meta name="twitter:image" content="{{ p.site_url }}{{ p.og_image }}"/>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/static/styles.css" />
 </head>
 
 <body class="bg-zinc-950 text-zinc-100">
-<div class="bg-grid"></div>
-<div class="matrix-bg"></div>
-<div class="max-w-6xl mx-auto px-5">
-    <header class="py-7 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-3">
-            <span class="h-9 w-9 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center font-semibold">K</span>
-            <div class="leading-tight">
-                <div class="font-semibold tracking-tight">{{ p.name }}</div>
-                <div class="text-xs text-zinc-400">{{ p.badge }}</div>
-            </div>
+
+<!-- Matrix background layer -->
+<canvas id="matrix-bg" aria-hidden="true"></canvas>
+
+<!-- gradient + grid -->
+<div class="bg-grid" aria-hidden="true"></div>
+
+<div class="max-w-6xl mx-auto px-5 page">
+    <header class="site-header">
+        <a href="/" class="brand">
+            <span class="brandMark">K</span>
+            <span class="brandText">
+          <span class="brandName">{{ p.name }}</span>
+          <span class="brandBadge">{{ p.badge }}</span>
+        </span>
         </a>
 
-        <nav class="hidden md:flex gap-5 text-sm text-zinc-300">
-            <a class="navlink" href="/#experience">Experience</a>
-            <a class="navlink" href="/#skills">Skills</a>
-            <a class="navlink" href="/projects">Projects</a>
-            <a class="navlink" href="/#education">Education</a>
-            <a class="navlink" href="/#contact">Contact</a>
+        <nav class="header-nav">
+            <a href="/#experience">Experience</a>
+            <a href="/#skills">Skills</a>
+            <a href="/projects">Projects</a>
+            <a href="/#education">Education</a>
+            <a href="/#contact">Contact</a>
         </nav>
 
-        <div class="flex gap-2">
-            <a class="btn ghost" href="{{ p.links.linkedin }}" target="_blank" rel="noreferrer">LinkedIn</a>
+        <div class="header-actions">
+            <!-- телефон: вот сюда (как ты спрашивал) -->
+            <a href="tel:+37443000252" class="phone-link">📞 +374 43 000 252</a>
+
+            <a href="{{ p.links.linkedin if p.links and p.links.linkedin else 'https://linkedin.com' }}"
+               class="btn ghost" target="_blank" rel="noreferrer">
+                LinkedIn
+            </a>
+
+            <!-- важно: id="btn-cv" чтобы сработал PDF -->
+            <a href="#" id="btn-cv" class="btn primary">Download CV (PDF)</a>
         </div>
     </header>
 
@@ -55,65 +69,247 @@
     </main>
 
     <footer class="py-10 text-sm text-zinc-500">
-        © {{ p.name }} • Python · FastAPI
+        © {{ p.name }} • Built with Python
     </footer>
 </div>
 
-<canvas id="matrix"></canvas>
+<!-- Hidden CV for PDF -->
+<div id="cv-pdf" style="display:none; background:#ffffff; color:#111; font-family: Arial, sans-serif;">
+    <div style="padding:28px 28px 18px; border-bottom:1px solid #eaeaea;">
+        <div style="display:flex; justify-content:space-between; gap:18px; align-items:flex-start;">
+            <div style="flex:1;">
+                <div style="font-size:28px; font-weight:800; letter-spacing:-0.5px;">{{ p.name }}</div>
+                <div style="margin-top:6px; font-size:14px; color:#444;">
+                    {{ p.badge }}{% if p.location %} • {{ p.location }}{% endif %}
+                </div>
+                <div style="margin-top:10px; font-size:13px; line-height:1.45; color:#333;">
+                    {{ p.headline }}
+                </div>
+            </div>
+
+            <div style="min-width:220px; text-align:right; font-size:12.5px; color:#333; line-height:1.6;">
+                {% if p.email %}<div><b>Email:</b> {{ p.email }}</div>{% endif %}
+                <div><b>Phone:</b> +374 43 000 252</div>
+                {% if p.links and p.links.linkedin %}<div><b>LinkedIn:</b> {{ p.links.linkedin }}</div>{% endif %}
+                {% if p.links and p.links.github %}<div><b>GitHub:</b> {{ p.links.github }}</div>{% endif %}
+                {% if p.site_url %}<div><b>Website:</b> {{ p.site_url }}</div>{% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div style="padding:20px 28px 28px;">
+        <div style="display:flex; gap:18px;">
+            <div style="flex:1.65;">
+                <div style="margin-bottom:16px;">
+                    <div style="font-size:12px; letter-spacing:1.8px; color:#666; font-weight:700;">SUMMARY</div>
+                    <div style="margin-top:8px; font-size:13.2px; line-height:1.55; color:#222;">
+                        {{ p.about }}
+                    </div>
+                </div>
+
+                <div style="margin-top:14px;">
+                    <div style="font-size:12px; letter-spacing:1.8px; color:#666; font-weight:700;">EXPERIENCE</div>
+
+                    {% for job in p.experience %}
+                    <div style="margin-top:12px; padding-top:12px; border-top:1px solid #f0f0f0;">
+                        <div style="display:flex; justify-content:space-between; gap:10px;">
+                            <div style="font-size:14px; font-weight:700; color:#111;">{{ job.role }}</div>
+                            <div style="font-size:12px; color:#666; white-space:nowrap;">{{ job.period }}</div>
+                        </div>
+                        <div style="margin-top:3px; font-size:13px; color:#333;">
+                            {{ job.company }}{% if job.location %} • <span style="color:#666">{{ job.location }}</span>{% endif %}
+                        </div>
+
+                        {% if job.bullets %}
+                        <ul style="margin:8px 0 0 18px; padding:0; font-size:13px; line-height:1.55; color:#222;">
+                            {% for b in job.bullets %}
+                            <li style="margin:4px 0;">{{ b }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div style="flex:1; border-left:1px solid #eee; padding-left:18px;">
+                <div style="margin-bottom:16px;">
+                    <div style="font-size:12px; letter-spacing:1.8px; color:#666; font-weight:700;">SKILLS</div>
+
+                    {% for g in p.skills_groups %}
+                    <div style="margin-top:10px;">
+                        <div style="font-size:12.5px; font-weight:700; color:#111;">{{ g.title }}</div>
+                        <div style="margin-top:6px; font-size:12.8px; line-height:1.55; color:#222;">
+                            {% for s in g.skills %}{{ s }}{% if not loop.last %}, {% endif %}{% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                {% if p.projects %}
+                <div style="margin-top:16px;">
+                    <div style="font-size:12px; letter-spacing:1.8px; color:#666; font-weight:700;">PROJECTS</div>
+                    {% for pr in p.projects %}
+                    <div style="margin-top:10px;">
+                        <div style="font-size:12.8px; font-weight:700; color:#111;">{{ pr.name }}</div>
+                        <div style="margin-top:5px; font-size:12.5px; line-height:1.5; color:#222;">{{ pr.desc }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                {% if p.education %}
+                <div style="margin-top:16px;">
+                    <div style="font-size:12px; letter-spacing:1.8px; color:#666; font-weight:700;">EDUCATION</div>
+                    {% for ed in p.education %}
+                    <div style="margin-top:10px;">
+                        <div style="font-size:12.8px; font-weight:700; color:#111;">{{ ed.school }}</div>
+                        {% if ed.program %}<div style="margin-top:3px; font-size:12.5px; color:#222;">{{ ed.program }}</div>{% endif %}
+                        <div style="margin-top:3px; font-size:12px; color:#666;">{{ ed.period }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div style="margin-top:16px; font-size:11px; color:#888; border-top:1px solid #eee; padding-top:10px;">
+            Generated from portfolio • {{ p.site_url }}
+        </div>
+    </div>
+</div>
+
+<!-- PDF generator -->
+<script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
+
+<!-- Matrix: slow, random, not full-screen at once, works on mobile -->
 <script>
-    (function () {
-        const canvas = document.getElementById("matrix");
-        if (!canvas) return;
-        const ctx = canvas.getContext("2d");
+    (() => {
+        const c = document.getElementById("matrix-bg");
+        if (!c) return;
+
+        const ctx = c.getContext("2d", { alpha: true });
+        const chars = "01";
+        let w = 0, h = 0, dpr = 1, fontSize = 14, cols = 0;
+
+        let y = [];
+        let startDelay = [];
+        let active = [];
+
+        const randInt = (a,b) => (Math.random()*(b-a+1)+a)|0;
+        const randChar = () => chars[(Math.random()*chars.length)|0];
+
+        function initColumns() {
+            cols = Math.max(1, Math.floor(w / fontSize));
+            y = new Array(cols).fill(0);
+            startDelay = Array.from({length: cols}, () => randInt(0, 280)); // рандом старт
+            active = Array.from({length: cols}, () => Math.random() < 0.40); // не весь экран сразу
+        }
 
         function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            dpr = Math.min(window.devicePixelRatio || 1, 2);
+            w = Math.floor(window.innerWidth);
+            h = Math.floor(window.innerHeight);
+
+            // чуть крупнее на мобиле чтобы было видно, но всё равно subtle
+            fontSize = (w <= 768) ? 16 : 14;
+
+            c.style.width = w + "px";
+            c.style.height = h + "px";
+            c.width = Math.floor(w * dpr);
+            c.height = Math.floor(h * dpr);
+            ctx.setTransform(dpr,0,0,dpr,0,0);
+
+            initColumns();
         }
-        window.addEventListener("resize", resize);
-        resize();
 
-        const letters = "01";
-        const fontSize = 18; // крупнее = реже столбцы
-        let columns = Math.floor(canvas.width / fontSize);
-        let drops = new Array(columns).fill(1);
-
-        function reset() {
-            columns = Math.floor(canvas.width / fontSize);
-            drops = new Array(columns).fill(1);
+        function pulseActivation() {
+            // постепенно включаем новые колонки
+            for (let i = 0; i < cols; i++) {
+                if (!active[i] && Math.random() < 0.010) {
+                    active[i] = true;
+                    startDelay[i] = randInt(0, 180);
+                    y[i] = 0;
+                }
+            }
         }
-        window.addEventListener("resize", reset);
 
-        function draw() {
-            // сильный “шлейф” → эффект почти растворён
-            ctx.fillStyle = "rgba(0,0,0,0.18)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        let last = 0;
+        function draw(t) {
+            // медленнее
+            if (t - last < 110) { requestAnimationFrame(draw); return; }
+            last = t;
+
+            // шлейф
+            ctx.fillStyle = "rgba(0,0,0,0.20)";
+            ctx.fillRect(0, 0, w, h);
 
             ctx.font = fontSize + "px monospace";
-            ctx.fillStyle = "rgba(0,255,120,0.25)"; // 👈 очень низкая яркость
+            // чуть виднее
+            ctx.fillStyle = "rgba(0,255,120,0.58)";
 
-            for (let i = 0; i < drops.length; i++) {
-                // рисуем только иногда → редкая плотность
-                if (Math.random() < 0.18) continue;
+            pulseActivation();
 
-                const ch = letters[(Math.random() * letters.length) | 0];
-                ctx.fillText(ch, i * fontSize, drops[i] * fontSize);
+            for (let i = 0; i < cols; i++) {
+                if (!active[i]) continue;
 
-                // медленнее падение
-                if (Math.random() < 0.35) drops[i]++;
+                if (startDelay[i] > 0) { startDelay[i]--; continue; }
 
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.985) {
-                    drops[i] = 0;
+                // немного “пустоты”, чтобы не было ковром
+                if (Math.random() < 0.22) continue;
+
+                const x = i * fontSize;
+                const yy = y[i];
+
+                ctx.fillText(randChar(), x, yy);
+
+                // падение медленное
+                y[i] += fontSize * 0.32;
+
+                if (y[i] > h + randInt(0, 260)) {
+                    if (Math.random() < 0.60) active[i] = false;
+                    y[i] = 0;
+                    startDelay[i] = randInt(60, 320);
                 }
             }
 
-            // меньше FPS
-            setTimeout(() => requestAnimationFrame(draw), 45);
+            requestAnimationFrame(draw);
         }
 
-        draw();
-    })();
+        window.addEventListener("resize", resize, {passive:true});
+        window.addEventListener("orientationchange", () => setTimeout(resize, 250), {passive:true});
 
+        resize();
+        requestAnimationFrame(draw);
+    })();
 </script>
+
+<!-- CV PDF generation -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.getElementById("btn-cv");
+        const el = document.getElementById("cv-pdf");
+        if (!btn || !el) return;
+
+        btn.addEventListener("click", async (e) => {
+            e.preventDefault();
+
+            const prevDisplay = el.style.display;
+            el.style.display = "block";
+
+            const opt = {
+                margin: [8, 8, 10, 8],
+                filename: "Khachatur_Khachatryan_CV.pdf",
+                image: { type: "jpeg", quality: 0.98 },
+                html2canvas: { scale: 3, useCORS: true, backgroundColor: "#ffffff" },
+                jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+            };
+
+            await html2pdf().set(opt).from(el).save();
+            el.style.display = prevDisplay;
+        });
+    });
+</script>
+
 </body>
 </html>

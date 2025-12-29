@@ -5,8 +5,8 @@ import shutil
 
 ROOT = Path(__file__).parent
 TEMPLATES = ROOT / "app" / "templates"
-STATIC = ROOT / "app" / "static"
-DATA = ROOT / "data" / "profile.json"   # у тебя так в дереве
+STATIC_SRC = ROOT / "app" / "static"
+DATA = ROOT / "data" / "profile.json"
 OUT = ROOT / "dist"
 
 OUT.mkdir(exist_ok=True)
@@ -15,20 +15,20 @@ env = Environment(loader=FileSystemLoader(str(TEMPLATES)))
 
 p = json.loads(DATA.read_text(encoding="utf-8"))
 
-pages = [
-    ("index.html", "/"),
-    ("projects.html", "/projects"),
-]
+def render_page(template_name: str, out_name: str, page_path: str):
+    tpl = env.get_template(template_name)
+    html = tpl.render(p=p, page_path=page_path)
+    (OUT / out_name).write_text(html, encoding="utf-8")
 
-for tpl_name, path in pages:
-    tpl = env.get_template(tpl_name)
-    html = tpl.render(p=p, path=path)
-    (OUT / tpl_name).write_text(html, encoding="utf-8")
+render_page("index.html", "index.html", "/")
+if (TEMPLATES / "projects.html").exists():
+    render_page("projects.html", "projects.html", "/projects.html")
 
-# копируем статику в dist/static
-dst_static = OUT / "static"
-if dst_static.exists():
-    shutil.rmtree(dst_static)
-shutil.copytree(STATIC, dst_static)
+# copy static -> dist/static
+dst = OUT / "static"
+if dst.exists():
+    shutil.rmtree(dst)
+if STATIC_SRC.exists():
+    shutil.copytree(STATIC_SRC, dst)
 
-print("OK -> dist готов:", [x[0] for x in pages], "+ static/")
+print("OK -> dist: index.html, projects.html, static/")
