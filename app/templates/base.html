@@ -1,8 +1,19 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <!-- Adaptive favicon -->
+    <link rel="icon" type="image/svg+xml"
+          href="/static/favicon/favicon-light.svg"
+          media="(prefers-color-scheme: light)">
+
+    <link rel="icon" type="image/svg+xml"
+          href="/static/favicon/favicon-dark.svg"
+          media="(prefers-color-scheme: dark)">
+
+    <!-- Fallback -->
+    <link rel="icon" type="image/x-icon" href="/static/favicon/favicon.ico">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
 
     <title>{{ p.name }} — Portfolio</title>
     <meta name="description" content="{{ p.headline }}"/>
@@ -21,7 +32,7 @@
     <meta name="twitter:image" content="{{ p.site_url }}{{ p.og_image }}"/>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="stylesheet" href="/static/styles.css"/>
 </head>
 
 <body class="bg-zinc-950 text-zinc-100">
@@ -229,7 +240,6 @@
 </div>
 
 
-
 <!-- PDF generator -->
 <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
 
@@ -239,7 +249,7 @@
         const c = document.getElementById("matrix-bg");
         if (!c) return;
 
-        const ctx = c.getContext("2d", { alpha: true });
+        const ctx = c.getContext("2d", {alpha: true});
         const chars = "01";
         let w = 0, h = 0, dpr = 1, fontSize = 14, cols = 0;
 
@@ -247,8 +257,8 @@
         let startDelay = [];
         let active = [];
 
-        const randInt = (a,b) => (Math.random()*(b-a+1)+a)|0;
-        const randChar = () => chars[(Math.random()*chars.length)|0];
+        const randInt = (a, b) => (Math.random() * (b - a + 1) + a) | 0;
+        const randChar = () => chars[(Math.random() * chars.length) | 0];
 
         function initColumns() {
             cols = Math.max(1, Math.floor(w / fontSize));
@@ -269,7 +279,7 @@
             c.style.height = h + "px";
             c.width = Math.floor(w * dpr);
             c.height = Math.floor(h * dpr);
-            ctx.setTransform(dpr,0,0,dpr,0,0);
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
             initColumns();
         }
@@ -286,9 +296,13 @@
         }
 
         let last = 0;
+
         function draw(t) {
             // медленнее
-            if (t - last < 110) { requestAnimationFrame(draw); return; }
+            if (t - last < 110) {
+                requestAnimationFrame(draw);
+                return;
+            }
             last = t;
 
             // шлейф
@@ -304,7 +318,10 @@
             for (let i = 0; i < cols; i++) {
                 if (!active[i]) continue;
 
-                if (startDelay[i] > 0) { startDelay[i]--; continue; }
+                if (startDelay[i] > 0) {
+                    startDelay[i]--;
+                    continue;
+                }
 
                 // немного “пустоты”, чтобы не было ковром
                 if (Math.random() < 0.22) continue;
@@ -327,8 +344,8 @@
             requestAnimationFrame(draw);
         }
 
-        window.addEventListener("resize", resize, {passive:true});
-        window.addEventListener("orientationchange", () => setTimeout(resize, 250), {passive:true});
+        window.addEventListener("resize", resize, {passive: true});
+        window.addEventListener("orientationchange", () => setTimeout(resize, 250), {passive: true});
 
         resize();
         requestAnimationFrame(draw);
@@ -351,9 +368,9 @@
             const opt = {
                 margin: [8, 8, 10, 8],
                 filename: "Khachatur_Khachatryan_CV.pdf",
-                image: { type: "jpeg", quality: 0.98 },
-                html2canvas: { scale: 3, useCORS: true, backgroundColor: "#ffffff" },
-                jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+                image: {type: "jpeg", quality: 0.98},
+                html2canvas: {scale: 3, useCORS: true, backgroundColor: "#ffffff"},
+                jsPDF: {unit: "mm", format: "a4", orientation: "portrait"}
             };
 
             await html2pdf().set(opt).from(el).save();
