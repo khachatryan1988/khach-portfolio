@@ -150,16 +150,6 @@
 
   "projects": [
     {
-      "name": "Automation API",
-      "type": "Backend Service",
-      "desc": "Production-ready FastAPI backend service with PostgreSQL, SQLAlchemy ORM, Alembic migrations, and Docker Compose.",
-      "stack": ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Alembic", "Docker"],
-      "github": "https://github.com/khachatryan1988/python-automation-api",
-      "live_url": "",
-      "role": "Python Developer",
-      "screenshots": ["/static/images/swagger-1.png", "/static/images/swagger-2.png"]
-    },
-    {
       "name": "Domus",
       "type": "Corporate Website & Internal Systems",
       "desc": "Corporate website and internal business systems for a large retail company. Backend development, integrations, and automation.",
@@ -222,6 +212,26 @@
       "stack": ["WordPress", "PHP", "HTML", "CSS"],
       "live_url": "https://affinityhospicehha.com",
       "role": "Freelance Backend / Web Developer"
+    },
+    {
+      "name": "Automation API",
+      "type": "Backend Service",
+      "desc": "Production-ready FastAPI backend service with PostgreSQL, SQLAlchemy ORM, Alembic migrations, and Docker Compose.",
+      "stack": ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Alembic", "Docker"],
+      "github": "https://github.com/khachatryan1988/python-automation-api",
+      "live_url": "",
+      "role": "Python Developer",
+      "screenshots": ["/static/images/swagger-1.png", "/static/images/swagger-2.png"]
+    },
+    {
+      "name": "Delivery Service",
+      "type": "Backend Service",
+      "desc": "Production-ready FastAPI backend service with PostgreSQL, SQLAlchemy ORM, Alembic migrations, and Docker Compose.",
+      "stack": ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Alembic", "Docker"],
+      "github": "https://github.com/khachatryan1988/deliveryservice",
+      "live_url": "",
+      "role": "Python Developer",
+      "screenshots": ["/static/images/deliveryservice-1.png", "/static/images/deliveryservice-2.png"]
     }
   ],
   "contact": {
